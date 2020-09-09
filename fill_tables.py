@@ -2,7 +2,17 @@ import sqlite3 as sql
 import csv
 import functions
 
-conn = sql.connect('Ads_test.db')  # connection to DB. Write "Ads_test.db" or ":memory:"
+'''Please run "create_tables2.py" BEFORE running this script. 
+    Steps : 
+        1 - Replace ":memory:" below with the name of the database you have previously created
+        2 - Run the script (it will take a minute)
+        3 - That's it. 
+        You can try running it again. If everything went well, you should see "All ads already in the DB. Nothing has been added".
+        
+    Next up : P-Value2.py
+'''
+
+conn = sql.connect('ad_test2.db')  # connection to DB. Write the name of your DB or ":memory:" for tests
 c = conn.cursor()
 
 # Filling the AG table

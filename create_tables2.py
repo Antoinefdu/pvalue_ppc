@@ -2,7 +2,32 @@ import sqlite3 as sql
 import csv
 import functions
 
-conn = sql.connect('Ads_test.db')  # connection to DB. Write "Ads_test.db" or ":memory:" for tests
+'''Please run this script first. 
+    Steps : 
+        1 - Replace ":memory:" below with the name of a new database (e.g.: "Ad_test5.db")
+        2 - Run the script
+        3 - Press "C" to continue, then "Enter" 
+        4 - Press "Y", then "Enter"
+        5 - We need to change the characteristics of a few table columns before creating the next table:
+            5.1 - Press "E" to edit, then "Enter"
+            5.2 - Type "impressions", then "Enter"
+            5.3 - Type "int", or "integer", then "Enter"
+                NOTE : you can use this to update not only the data type, but any other column property (autoincrement, not null, etc)
+            5.4 - Press "E" to edit, then "Enter"
+            5.5 - Type "clicks", then "Enter"
+            5.6 - Type "int", or "integer", then "Enter"
+            5.7 - Press "E" to edit, then "Enter"
+            5.8 - Type "ctr", then "Enter"
+            5.9 - Type "real", or "float", then "Enter"
+        6 - Press "C" to continue, then "Enter" 
+        7 - Press "Y", then "Enter"
+        
+    Next up : fill_tables.py
+        
+'''
+
+
+conn = sql.connect('ad_test2.db')  # connection to DB. Write the name of your DB or ":memory:" for tests
 c = conn.cursor()
 
 #  below is the code that actually initialise the database and creates the first tables.
