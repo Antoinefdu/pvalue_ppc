@@ -2,6 +2,8 @@
 
 This project was inspired by something I made on Excel a while ago as a PPC Manager. It automatically calculates the P-Value of hundreds of A/B tests and returns the ones that have reached statistical significance. I did this to practice coding with SQLite, Pandas, csv, and a few other libraries. This is also my first attempt at following the guidelines of functional programming, which is why most of the code will be found in functions.py, in the form of pure functions.
 
+### To try it for yourself, simply download this repo, open "create_tables2.py" and follow the instructions. 
+
 ## Context : 
   In PPC (Pay Per Click), an important part of the job consists in writing online ads and testing their effectiveness against one-another (known as 'A/B testing'). One common way to do this is to group them in pairs in different ad groups. Upon being triggered by a Google user, that ad group will then randomly pick one ad and show it to the user who will then decide to click on it, or not. The amount of times an ad gets shown ("impression") and clicked is recorded, and after a while we get to see which ad was the most enticing, i.e which one was the best at generating clicks. 
   
@@ -26,6 +28,8 @@ For more information on how p-values of a/b tests work, please check [this artic
   - p-value2 will analyse each pair of ads within the same ad group and compare their results. Only the tests that have reached a low enough p-value will be shown in terminal. 
 
 
-### To try it for yourself, simply download this repo, open "create_tables2.py" and follow the instructions. 
- 
+## Questions you might have:
+  * Q: "Hold on. Are you saying you're regularly checking on your A/B tests and waiting for them to reach statistical significance? Isn't that a form of P-hacking?
+  
+      * A : Yes it is. As we keep running the same test with a bigger and bigger sample size, we raise the statistical power of our test, until eventually **any** variation in the results will end up being statistically significant. But that doesn't mean those results are meaningful. Conversely, it is also a bad practice to stop an an A/B test as soon as we reach p < 0.05 no matter how small our sample size is. That is why to do this properly, we should decide on a sample size in advance, then check the P-value of our tests. In the case of search ads, considering a base rate of 0.04, an MDE (relative) of 0.005, an alpha of 0.05 and a statistical power of 0.8 I calculated that it should be around 25,000.
 
