@@ -26,6 +26,6 @@ For more information on how p-values of a/b tests work, please check [this artic
   - p-value2 will analyse each pair of ads within the same ad group and compare their results. Only the tests that have reached a low enough p-value will be shown in terminal. 
 
 
-### To try it for yourself, simply open "create_tables2.py" and follow the instructions. 
+### To try it for yourself, simply download this repo, open "create_tables2.py" and follow the instructions. 
  
 
