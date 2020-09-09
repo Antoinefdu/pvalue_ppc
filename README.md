@@ -16,6 +16,8 @@ For the maths enthusiasts among you, those p-values were calculated by:
 2. With those numbers, we can then run a welch t-test, using t = (μ1 - μ2) / sqrt(SEM1^2 + SEM2^2)
 3. And all that's left is to calculate the cumulative density function of that t-test. For that I simply used stats.norm.cdf from the scipy library.
 
+For more information on how p-values of a/b tests work, please check [this article](https://towardsdatascience.com/the-math-behind-a-b-testing-with-example-code-part-1-of-2-7be752e1d06f), by mnguyenngo
+
 
 This app aims at calculating the p-value of not 1 test, but a whole bunch of them, and to reveal the pairs of ads that have reached statistical significance and need to be updated.
 
@@ -25,8 +27,6 @@ This app aims at calculating the p-value of not 1 test, but a whole bunch of the
   - create_table2.py will extract the headers from my csv file and use them to create a couple of tables on a new database.
   - fill_tables.py will upload the content of the csv file into those tables.
   - p-value2 will analyse each pair of ads within the same ad group and compare their results. Only the tests that have reached a low enough p-value will be shown in terminal. 
-  
-For more information on how p-values of a/b tests work, please check [this article](https://towardsdatascience.com/the-math-behind-a-b-testing-with-example-code-part-1-of-2-7be752e1d06f), by mnguyenngo
 
 
 ### To try it for yourself, simply open "create_tables2.py" and follow the instructions. 
