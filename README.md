@@ -3,7 +3,7 @@
 This project was inspired by something I made on Excel a while ago as a PPC Manager. I did this to practice coding with SQLite, Pandas, and a few other libraries.
 
 ## Context : 
-  In PPC (Pay Per Click), an important part of the job consists in writing ads and testing their effectiveness against one-another (A/B testing). One common way to do this is to group them in pairs in different ad groups. Upon being triggered by a Google user, that ad group will then randomly select one of the two ad and show it to the user who will then decide to click on it, or not. The amount of times an ad gets shown ("impression") and clicked is recorded, and after a while we get to see which ad was the most enticing, i.e which one was the best at generating clicks. 
+  In PPC (Pay Per Click), an important part of the job consists in writing online ads and testing their effectiveness against one-another (A/B testing). One common way to do this is to group them in pairs in different ad groups. Upon being triggered by a Google user, that ad group will then randomly select one of the two ad and show it to the user who will then decide to click on it, or not. The amount of times an ad gets shown ("impression") and clicked is recorded, and after a while we get to see which ad was the most enticing, i.e which one was the best at generating clicks. 
   
   The problem usually comes with interpreting the results. 
   
