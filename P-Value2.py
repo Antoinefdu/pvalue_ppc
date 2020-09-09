@@ -33,7 +33,7 @@ class ads_stats:
 
 
 # connecting to DB
-conn = sql.connect('Ads_test2.db')  # connection to DB
+conn = sql.connect('Ads_test.db')  # connection to DB
 c = conn.cursor()
 
 #  creating a list of all the tables in our DB. Turning each table into a table object
@@ -75,5 +75,3 @@ for ad_group in c.fetchall():
             print()
 
 c.close()
-
-# TODO replace all brand names in ads and ad groups and campaigns

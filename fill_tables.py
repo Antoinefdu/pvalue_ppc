@@ -2,7 +2,7 @@ import sqlite3 as sql
 import csv
 import functions
 
-conn = sql.connect('Ads_test2.db')  # connection to DB. Write "Ads_test.db" or ":memory:"
+conn = sql.connect('Ads_test.db')  # connection to DB. Write "Ads_test.db" or ":memory:"
 c = conn.cursor()
 
 # Filling the AG table
@@ -23,8 +23,8 @@ with open('Ad_report2.csv', 'r') as csv_file:
     for row in csv_dict_reader:
         keys = list(row.keys())
         # We don't want to include Responsive search ads in our P-Value calculator,
-        # so if one of those appears, we will break the inner loop (line 31)
-        # then continue the outer loop (on line 41)
+        # so if one of those appears, we will break the inner loop (line 30)
+        # then continue the outer loop (on line 38)
         for item in keys:
             if item.startswith("Responsive Search Ad") and row[item] != ' --':
                 break

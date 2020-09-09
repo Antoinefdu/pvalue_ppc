@@ -2,7 +2,7 @@ import sqlite3 as sql
 import csv
 import functions
 
-conn = sql.connect('Ads_test2.db')  # connection to DB. Write "Ads_test.db" or ":memory:" for tests
+conn = sql.connect('Ads_test.db')  # connection to DB. Write "Ads_test.db" or ":memory:" for tests
 c = conn.cursor()
 
 #  below is the code that actually initialise the database and creates the first tables.
