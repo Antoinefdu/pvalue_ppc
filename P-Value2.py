@@ -54,7 +54,7 @@ alpha = 0.05
 
 
 # connecting to DB
-conn = sql.connect('Ads.db')  # connection to DB. You know what to do.
+conn = sql.connect(':memory:')  # connection to DB. You know what to do.
 c = conn.cursor()
 
 #  creating a list of all the tables in our DB. Turning each table into a table object
