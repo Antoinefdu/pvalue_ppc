@@ -27,7 +27,7 @@ import functions
 '''
 
 
-conn = sql.connect('ad_test2.db')  # connection to DB. Write the name of your DB or ":memory:" for tests
+conn = sql.connect(':memory:')  # connection to DB. Write the name of your DB or ":memory:" for tests
 c = conn.cursor()
 
 #  below is the code that actually initialise the database and creates the first tables.
