@@ -11,7 +11,9 @@ This project was inspired by something I made on Excel a while ago as a PPC Mana
   
   In the example above (6/25 vs 3/12), we get a P-Value of 0.47, meaning *if there was no real difference in effectiveness between the two ads*, Ad_1 would have a 47% chance (nearly a flip-coin) of outperforming Ad_2 by at least that kind a margin. That result is far above 0.05 (5%), and pretty much as insignificant as you can get.
   
-For the maths enthusiasts among you, those p-values were calculated by:
+This app aims at calculating the p-value of not 1 test, but a whole bunch of them, and to reveal the pairs of ads that have reached statistical significance and need to be updated.
+
+PS: For the maths enthusiasts among you, those p-values were calculated by:
 1. Considering each results as a binomial distribution, we can calculate their mean (μ, which is basically clicks/impressions). Once we have that, we are able to calculate their standard deviation (σ = sqrt(μ*(1-μ)), [find out why here](https://youtu.be/ry81_iSHt6E)) and with that standard deviation, we calculate the standard error of mean, which in this case is SEM = σ/sqrt(n).
 2. With those numbers, we can then run a welch t-test, using t = (μ1 - μ2) / sqrt(SEM1^2 + SEM2^2)
 3. And all that's left is to calculate the cumulative density function of that t-test. For that I simply used stats.norm.cdf from the scipy library.
@@ -19,7 +21,6 @@ For the maths enthusiasts among you, those p-values were calculated by:
 For more information on how p-values of a/b tests work, please check [this article](https://towardsdatascience.com/the-math-behind-a-b-testing-with-example-code-part-1-of-2-7be752e1d06f), by mnguyenngo
 
 
-This app aims at calculating the p-value of not 1 test, but a whole bunch of them, and to reveal the pairs of ads that have reached statistical significance and need to be updated.
 
   
 ## How it works: 
