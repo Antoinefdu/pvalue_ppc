@@ -1,6 +1,6 @@
 # P-Value Calculator for PPC
 
-This project was inspired by something I made on Excel a while ago as a PPC Manager. It automatically calculates the P-Value of hundreds of A/B tests and returns the ones that have reached statistical significance. I did this to practice coding with SQLite, Pandas, and a few other libraries.
+This project was inspired by something I made on Excel a while ago as a PPC Manager. It automatically calculates the P-Value of hundreds of A/B tests and returns the ones that have reached statistical significance. I did this to practice coding with SQLite, Pandas, csv, and a few other libraries. This is also my first attempt at following the guidelines of functional programming, which is why most of the code will be found in functions.py, in the form of pure functions.
 
 ## Context : 
   In PPC (Pay Per Click), an important part of the job consists in writing online ads and testing their effectiveness against one-another (known as 'A/B testing'). One common way to do this is to group them in pairs in different ad groups. Upon being triggered by a Google user, that ad group will then randomly pick one ad and show it to the user who will then decide to click on it, or not. The amount of times an ad gets shown ("impression") and clicked is recorded, and after a while we get to see which ad was the most enticing, i.e which one was the best at generating clicks. 
