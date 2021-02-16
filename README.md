@@ -2,7 +2,7 @@
 
 This project was inspired by something I made on Excel a while ago as a PPC Manager. It automatically calculates the P-Value of hundreds of A/B tests and returns the ones that have reached statistical significance. I did this to practice coding with SQLite, Pandas, csv, and a few other libraries. This is also my first attempt at following the guidelines of functional programming, which is why most of the code will be found in functions.py, in the form of pure functions.
 
-### To try it for yourself, simply download this repo, open "create_tables2.py" and follow the instructions. 
+### To try it for yourself, simply download this repo, open "start.py" and follow the instructions. 
 
 ## Context : 
   In PPC (Pay Per Click), an important part of the job consists in writing online ads and testing their effectiveness against one-another (known as 'A/B testing'). One common way to do this is to group them in pairs in different ad groups. Upon being triggered by a Google user, that ad group will then randomly pick one ad and show it to the user who will then decide to click on it, or not. The amount of times an ad gets shown ("impression") and clicked is recorded, and after a while we get to see which ad was the most enticing, i.e which one was the best at generating clicks. 
@@ -23,7 +23,7 @@ For more information on how p-values of a/b tests work, please check [this artic
 
 ## How it works: 
   This project uses data that I extracted from one of my PPC accounts (Ad_Report2.csv), 
-  - create_table2.py will extract the headers from my csv file and use them to create a couple of tables on a new database.
+  - start.py will extract the headers from my csv file and use them to create a couple of tables on a new database.
   - fill_tables.py will upload the content of the csv file into those tables.
   - p-value2 will analyse each pair of ads within the same ad group and compare their results. Only the tests that have reached a low enough p-value will be shown in terminal. 
 

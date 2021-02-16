@@ -2,79 +2,72 @@ import sqlite3 as sql
 import csv
 import functions
 
-'''Please run "create_tables2.py" BEFORE running this script. 
+'''Please run "start.py" BEFORE running this script. 
     Steps : 
-        1 - Replace ":memory:" below with the name of the database you have previously created
-        2 - Run the script (it will take a minute)
+        1 - Run the script
+        2 - Select a database and press "Enter" (it will take a minute)
         3 - That's it. 
         You can try running it again. If everything went well, you should see "All ads already in the DB. Nothing has been added".
         
     Next up : P-Value2.py
 '''
 
-conn = sql.connect(':memory:')  # connection to DB. Write the name of your DB or ":memory:" for tests
-c = conn.cursor()
+if __name__ == '__main__':
+    db_choice = functions.select_table()
 
-# Filling the AG table
-# Opening the reader to extract each unique pair of [Campaign + Ad Group] and use it to create a table
-with open('Ad_Report2.csv', 'r') as csv_file:
-    csv_dict_reader = csv.DictReader(csv_file)
-    for row in csv_dict_reader:
-        if functions.check_if_exists(c, 'Ad_Groups', {'CAMPAIGN_NAME': row['Campaign'], 'AD_GROUP_NAME': row['Ad group']}):
-            continue
-        else:
-            functions.add_item(conn, c, 'Ad_Groups', {'CAMPAIGN_NAME': row['Campaign'], 'AD_GROUP_NAME': row['Ad group']})
+    with sql.connect(db_choice) as conn:
+        c = conn.cursor()
 
-# Filling the Ads table
-# Opening the reader to extract content and dumping into DB
-with open('Ad_report2.csv', 'r') as csv_file:
-    csv_dict_reader = csv.DictReader(csv_file)
-    no_duplicate_found = True
-    for row in csv_dict_reader:
-        keys = list(row.keys())
-        # We don't want to include Responsive search ads in our P-Value calculator,
-        # so if one of those appears, we will break the inner loop (line 30)
-        # then continue the outer loop (on line 38)
-        for item in keys:
-            if item.startswith("Responsive Search Ad") and row[item] != ' --':
-                break
-        else:
-            if functions.check_if_exists(c, 'Ads', row):
+        # Filling the AG table
+        # Opening the reader to extract each unique pair of [Campaign + Ad Group] and use it to create a table
+        with open('Ad_Report2.csv', 'r') as csv_file:
+            csv_dict_reader = csv.DictReader(csv_file)
+            for row in csv_dict_reader:
+                if functions.check_if_exists(c, 'Ad_Groups', {'CAMPAIGN_NAME': row['Campaign'], 'AD_GROUP_NAME': row['Ad group']}):
+                    continue
+                else:
+                    functions.add_item(conn, c, 'Ad_Groups', {'CAMPAIGN_NAME': row['Campaign'], 'AD_GROUP_NAME': row['Ad group']})
+
+        # Filling the Ads table
+        # Opening the reader to extract content and dumping into DB
+        with open('Ad_report2.csv', 'r') as csv_file:
+            csv_dict_reader = csv.DictReader(csv_file)
+            no_duplicate_found = True
+            for row in csv_dict_reader:
+                keys = list(row.keys())
+                # We don't want to include Responsive search ads in our P-Value calculator,
+                # so if one of those appears, we will break the inner loop
+                # then continue the outer loop
+                for item in keys:
+                    if item.startswith("Responsive Search Ad") and row[item] != ' --':
+                        break
+                else:
+                    if functions.check_if_exists(c, 'Ads', row):
+                        continue
+                    else:
+                        functions.add_item(conn, c, 'Ads', row)
+                        no_duplicate_found = False
+                        print(row)
                 continue
-            else:
-                functions.add_item(conn, c, 'Ads', row)
-                no_duplicate_found = False
-                print(row)
-        continue
-    if no_duplicate_found:
-        print("All ads already in the DB. Nothing has been added")
+            if no_duplicate_found:
+                print("All ads already in the DB. Nothing has been added")
 
-
-c.close()
-
-
-
-    # with open('New_Ad_Report.csv', 'w', newline='') as new_csv:  # Open writer
-    #     csv_writer = csv.DictWriter(new_csv, fieldnames=headers)
-    #     csv_writer.writeheader()
-    #     for row in csv_dict_reader:
-    #         keys = list(row.keys())
-    #         for item in keys:
-    #             if item.startswith("Responsive Search Ad"):
-    #                 del row[item]
-    #         csv_writer.writerow(row)
-
+# with open('New_Ad_Report.csv', 'w', newline='') as new_csv:  # Open writer
+# 	csv_writer = csv.DictWriter(new_csv, fieldnames=headers)
+# 	csv_writer.writeheader()
+# 	for row in csv_dict_reader:
+# 		keys = list(row.keys())
+# 		for item in keys:
+# 			if item.startswith("Responsive Search Ad"):
+# 				del row[item]
+# 		csv_writer.writerow(row)
 
 '''c.execute("SELECT * FROM Ads")
 for x in c.fetchall():
-    print(x)
+	print(x)	
 
 print(check_if_exists('Ads', {'Headline_1': 'Conference Calling Made Better', 'Headline 2': 'With PowWowNowâ„¢', 'Id': 3}))
 c.close()'''
-
-
-
-
 
 '''def create_table(table, d_columns):  # d_columns in format {Column_name : Attribute}, e.g.: {Id : INTEGER AUTOINCREMENT}
     table = str(table.replace(" ", "_").title())
